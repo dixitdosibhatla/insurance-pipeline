@@ -18,7 +18,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Teacher",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Email",
       "customerSince": "2022-11-25"
@@ -438,7 +438,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Nurse",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Email",
       "customerSince": "2019-04-20"
@@ -918,7 +918,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "IT Analyst",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2019-03-26"
@@ -1038,7 +1038,7 @@
     "profile": {
       "maritalStatus": "Single",
       "occupation": "Teacher",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Email",
       "customerSince": "2020-12-24"
@@ -1458,7 +1458,7 @@
     "profile": {
       "maritalStatus": "Divorced",
       "occupation": "Manager",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Email",
       "customerSince": "2020-10-29"
@@ -1668,7 +1668,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Accountant",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Email",
       "customerSince": "2021-11-19"
@@ -1878,7 +1878,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Accountant",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "High Risk",
       "preferredContact": "Email",
       "customerSince": "2015-04-28"
@@ -3438,7 +3438,7 @@
     "profile": {
       "maritalStatus": "Single",
       "occupation": "Attorney",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2021-02-21"
@@ -3678,7 +3678,7 @@
     "profile": {
       "maritalStatus": "Divorced",
       "occupation": "Contractor",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Phone",
       "customerSince": "2016-10-08"
@@ -3738,7 +3738,7 @@
     "profile": {
       "maritalStatus": "Divorced",
       "occupation": "Engineer",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Email",
       "customerSince": "2018-02-06"
@@ -4008,7 +4008,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Retired",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Mail",
       "customerSince": "2015-09-15"
@@ -4338,7 +4338,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Engineer",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Phone",
       "customerSince": "2016-03-17"
@@ -4968,7 +4968,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Driver",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2015-12-18"
@@ -5898,7 +5898,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "IT Analyst",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2018-02-26"
@@ -6108,7 +6108,7 @@
     "profile": {
       "maritalStatus": "Single",
       "occupation": "Attorney",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Phone",
       "customerSince": "2022-10-11"
@@ -6318,7 +6318,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Self-Employed",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2017-10-09"
@@ -7638,7 +7638,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Manager",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Email",
       "customerSince": "2021-06-14"
@@ -7758,7 +7758,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Teacher",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Email",
       "customerSince": "2019-11-13"
@@ -7848,7 +7848,7 @@
     "profile": {
       "maritalStatus": "Single",
       "occupation": "Retired",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Mail",
       "customerSince": "2019-10-13"
@@ -7878,7 +7878,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Nurse",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Mail",
       "customerSince": "2015-06-17"
@@ -8298,7 +8298,7 @@
     "profile": {
       "maritalStatus": "Single",
       "occupation": "Retired",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Phone",
       "customerSince": "2015-11-12"
@@ -9408,7 +9408,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Sales Rep",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "High Risk",
       "preferredContact": "Phone",
       "customerSince": "2018-04-22"
@@ -9738,7 +9738,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Driver",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "High Risk",
       "preferredContact": "Mail",
       "customerSince": "2021-07-12"
@@ -11958,7 +11958,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Accountant",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Mail",
       "customerSince": "2019-07-14"
@@ -13158,7 +13158,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "IT Analyst",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Mail",
       "customerSince": "2021-09-24"
@@ -14028,7 +14028,7 @@
     "profile": {
       "maritalStatus": "Single",
       "occupation": "IT Analyst",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "High Risk",
       "preferredContact": "Mail",
       "customerSince": "2021-03-02"
@@ -14178,7 +14178,7 @@
     "profile": {
       "maritalStatus": "Single",
       "occupation": "Attorney",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Email",
       "customerSince": "2018-01-11"
@@ -15108,7 +15108,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Engineer",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "High Risk",
       "preferredContact": "Email",
       "customerSince": "2019-03-01"
@@ -15708,7 +15708,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Manager",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "High Risk",
       "preferredContact": "Email",
       "customerSince": "2019-07-25"
@@ -16008,7 +16008,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Manager",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Email",
       "customerSince": "2020-12-04"
@@ -16938,7 +16938,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Engineer",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Email",
       "customerSince": "2015-01-05"
@@ -17928,7 +17928,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Self-Employed",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Email",
       "customerSince": "2021-01-05"
@@ -18048,7 +18048,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Self-Employed",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2016-05-25"
@@ -18228,7 +18228,7 @@
     "profile": {
       "maritalStatus": "Divorced",
       "occupation": "Attorney",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "High Risk",
       "preferredContact": "Email",
       "customerSince": "2021-06-09"
@@ -18648,7 +18648,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Manager",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Phone",
       "customerSince": "2022-10-16"
@@ -18948,7 +18948,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "IT Analyst",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Mail",
       "customerSince": "2015-02-18"
@@ -18978,7 +18978,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Sales Rep",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2022-09-20"
@@ -19128,7 +19128,7 @@
     "profile": {
       "maritalStatus": "Divorced",
       "occupation": "Accountant",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Email",
       "customerSince": "2015-05-23"
@@ -19368,7 +19368,7 @@
     "profile": {
       "maritalStatus": "Single",
       "occupation": "Contractor",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Phone",
       "customerSince": "2020-05-26"
@@ -19518,7 +19518,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Self-Employed",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Email",
       "customerSince": "2022-11-26"
@@ -19758,7 +19758,7 @@
     "profile": {
       "maritalStatus": "Single",
       "occupation": "Accountant",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Email",
       "customerSince": "2021-05-29"
@@ -19938,7 +19938,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Contractor",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Phone",
       "customerSince": "2022-11-11"
@@ -20058,7 +20058,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Driver",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Phone",
       "customerSince": "2022-05-11"
@@ -20358,7 +20358,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Teacher",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2019-10-09"
@@ -20928,7 +20928,7 @@
     "profile": {
       "maritalStatus": "Single",
       "occupation": "Nurse",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Phone",
       "customerSince": "2015-02-11"
@@ -21498,7 +21498,7 @@
     "profile": {
       "maritalStatus": "Divorced",
       "occupation": "Nurse",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Email",
       "customerSince": "2022-09-27"
@@ -21828,7 +21828,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Contractor",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Email",
       "customerSince": "2017-06-26"
@@ -22098,7 +22098,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Sales Rep",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Mail",
       "customerSince": "2020-12-28"
@@ -22188,7 +22188,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Retired",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Phone",
       "customerSince": "2022-09-25"
@@ -22398,7 +22398,7 @@
     "profile": {
       "maritalStatus": "Divorced",
       "occupation": "Manager",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "High Risk",
       "preferredContact": "Email",
       "customerSince": "2022-11-24"
@@ -22458,7 +22458,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Teacher",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Phone",
       "customerSince": "2017-11-16"
@@ -23148,7 +23148,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Sales Rep",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2015-04-07"
@@ -23328,7 +23328,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Teacher",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Phone",
       "customerSince": "2021-01-07"
@@ -23358,7 +23358,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Driver",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "High Risk",
       "preferredContact": "Email",
       "customerSince": "2019-10-03"
@@ -23778,7 +23778,7 @@
     "profile": {
       "maritalStatus": "Divorced",
       "occupation": "Accountant",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2017-11-29"
@@ -23808,7 +23808,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Retired",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Phone",
       "customerSince": "2020-01-19"
@@ -24408,7 +24408,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Engineer",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Email",
       "customerSince": "2022-05-23"
@@ -24888,7 +24888,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Retired",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "High Risk",
       "preferredContact": "Mail",
       "customerSince": "2017-04-13"
@@ -25128,7 +25128,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Teacher",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Phone",
       "customerSince": "2019-11-12"
@@ -25158,7 +25158,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Teacher",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Phone",
       "customerSince": "2019-11-12"
@@ -25398,7 +25398,7 @@
     "profile": {
       "maritalStatus": "Divorced",
       "occupation": "Engineer",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Email",
       "customerSince": "2020-09-15"
@@ -25668,7 +25668,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Engineer",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Mail",
       "customerSince": "2019-05-27"
@@ -26148,7 +26148,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Self-Employed",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Email",
       "customerSince": "2015-03-08"
@@ -26238,7 +26238,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Driver",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2016-06-26"
@@ -26838,7 +26838,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Teacher",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "High Risk",
       "preferredContact": "Mail",
       "customerSince": "2022-12-20"
@@ -26868,7 +26868,7 @@
     "profile": {
       "maritalStatus": "Single",
       "occupation": "IT Analyst",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Mail",
       "customerSince": "2019-05-13"
@@ -27948,7 +27948,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Attorney",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Phone",
       "customerSince": "2021-03-05"
@@ -28998,7 +28998,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Driver",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2015-06-29"
@@ -29538,7 +29538,7 @@
     "profile": {
       "maritalStatus": "Single",
       "occupation": "Accountant",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Mail",
       "customerSince": "2021-05-12"
@@ -29748,7 +29748,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Attorney",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Email",
       "customerSince": "2019-02-09"
@@ -30708,7 +30708,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Teacher",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "High Risk",
       "preferredContact": "Email",
       "customerSince": "2015-11-27"
@@ -31248,7 +31248,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Manager",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Email",
       "customerSince": "2016-12-11"
@@ -31368,7 +31368,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Engineer",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Email",
       "customerSince": "2015-01-16"
@@ -31548,7 +31548,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "IT Analyst",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Phone",
       "customerSince": "2020-07-14"
@@ -31818,7 +31818,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Retired",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Mail",
       "customerSince": "2019-06-08"
@@ -31998,7 +31998,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Contractor",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2019-12-24"
@@ -32448,7 +32448,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Self-Employed",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "High Risk",
       "preferredContact": "Email",
       "customerSince": "2018-05-31"
@@ -32478,7 +32478,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Manager",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "High Risk",
       "preferredContact": "Email",
       "customerSince": "2017-02-26"
@@ -32658,7 +32658,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Retired",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Phone",
       "customerSince": "2019-12-24"
@@ -33108,7 +33108,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Engineer",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2021-09-29"
@@ -33588,7 +33588,7 @@
     "profile": {
       "maritalStatus": "Divorced",
       "occupation": "Contractor",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Email",
       "customerSince": "2020-08-25"
@@ -33678,7 +33678,7 @@
     "profile": {
       "maritalStatus": "Divorced",
       "occupation": "Self-Employed",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2015-04-23"
@@ -33858,7 +33858,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Teacher",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Phone",
       "customerSince": "2018-03-31"
@@ -34398,7 +34398,7 @@
     "profile": {
       "maritalStatus": "Single",
       "occupation": "IT Analyst",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Phone",
       "customerSince": "2017-06-23"
@@ -34548,7 +34548,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "IT Analyst",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Mail",
       "customerSince": "2016-07-01"
@@ -34608,7 +34608,7 @@
     "profile": {
       "maritalStatus": "Single",
       "occupation": "Accountant",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "High Risk",
       "preferredContact": "Phone",
       "customerSince": "2018-08-12"
@@ -34998,7 +34998,7 @@
     "profile": {
       "maritalStatus": "Single",
       "occupation": "Driver",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "High Risk",
       "preferredContact": "Email",
       "customerSince": "2022-08-05"
@@ -35088,7 +35088,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Manager",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "High Risk",
       "preferredContact": "Email",
       "customerSince": "2015-05-31"
@@ -35808,7 +35808,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "IT Analyst",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Email",
       "customerSince": "2020-10-24"
@@ -35958,7 +35958,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "IT Analyst",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2016-09-04"
@@ -36018,7 +36018,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Sales Rep",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Mail",
       "customerSince": "2017-11-08"
@@ -36078,7 +36078,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Manager",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Email",
       "customerSince": "2015-04-29"
@@ -36258,7 +36258,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Contractor",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Mail",
       "customerSince": "2018-03-16"
@@ -36438,7 +36438,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "IT Analyst",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Email",
       "customerSince": "2018-11-13"
@@ -38328,7 +38328,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Teacher",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2017-11-13"
@@ -39678,7 +39678,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Driver",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Phone",
       "customerSince": "2020-07-04"
@@ -39858,7 +39858,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Retired",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Mail",
       "customerSince": "2021-06-07"
@@ -39948,7 +39948,7 @@
     "profile": {
       "maritalStatus": "Divorced",
       "occupation": "Retired",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Email",
       "customerSince": "2022-11-13"
@@ -41658,7 +41658,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Contractor",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2018-12-05"
@@ -41748,7 +41748,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Teacher",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2017-06-28"
@@ -42018,7 +42018,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Driver",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Mail",
       "customerSince": "2018-11-12"
@@ -42228,7 +42228,7 @@
     "profile": {
       "maritalStatus": "Divorced",
       "occupation": "Accountant",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2019-05-19"
@@ -42558,7 +42558,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Driver",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Email",
       "customerSince": "2021-12-13"
@@ -42738,7 +42738,7 @@
     "profile": {
       "maritalStatus": "Divorced",
       "occupation": "Self-Employed",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2017-06-12"
@@ -43428,7 +43428,7 @@
     "profile": {
       "maritalStatus": "Divorced",
       "occupation": "Manager",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Email",
       "customerSince": "2021-05-02"
@@ -44298,7 +44298,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Sales Rep",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "High Risk",
       "preferredContact": "Phone",
       "customerSince": "2017-10-17"
@@ -44928,7 +44928,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "IT Analyst",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "High Risk",
       "preferredContact": "Email",
       "customerSince": "2020-05-13"
@@ -45318,7 +45318,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Self-Employed",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Email",
       "customerSince": "2019-10-21"
@@ -46008,7 +46008,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Attorney",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Email",
       "customerSince": "2020-03-12"
@@ -46338,7 +46338,7 @@
     "profile": {
       "maritalStatus": "Divorced",
       "occupation": "Teacher",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Mail",
       "customerSince": "2022-04-30"
@@ -46548,7 +46548,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Engineer",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2018-01-21"
@@ -47148,7 +47148,7 @@
     "profile": {
       "maritalStatus": "Divorced",
       "occupation": "Attorney",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Mail",
       "customerSince": "2017-11-17"
@@ -48228,7 +48228,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Nurse",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Email",
       "customerSince": "2021-04-03"
@@ -48318,7 +48318,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Driver",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Email",
       "customerSince": "2018-06-10"
@@ -48738,7 +48738,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Nurse",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2019-04-19"
@@ -50088,7 +50088,7 @@
     "profile": {
       "maritalStatus": "Single",
       "occupation": "Sales Rep",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Phone",
       "customerSince": "2018-11-11"
@@ -50148,7 +50148,7 @@
     "profile": {
       "maritalStatus": "Single",
       "occupation": "Manager",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2017-12-12"
@@ -50298,7 +50298,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Accountant",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2018-03-16"
@@ -50508,7 +50508,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Engineer",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Mail",
       "customerSince": "2019-04-17"
@@ -51198,7 +51198,7 @@
     "profile": {
       "maritalStatus": "Single",
       "occupation": "Accountant",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "High Risk",
       "preferredContact": "Email",
       "customerSince": "2015-02-16"
@@ -51648,7 +51648,7 @@
     "profile": {
       "maritalStatus": "Divorced",
       "occupation": "Sales Rep",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Email",
       "customerSince": "2017-08-04"
@@ -52578,7 +52578,7 @@
     "profile": {
       "maritalStatus": "Single",
       "occupation": "Driver",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "High Risk",
       "preferredContact": "Phone",
       "customerSince": "2019-03-12"
@@ -52758,7 +52758,7 @@
     "profile": {
       "maritalStatus": "Divorced",
       "occupation": "Nurse",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2019-03-28"
@@ -54948,7 +54948,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Driver",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Email",
       "customerSince": "2019-03-28"
@@ -55998,7 +55998,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Retired",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2015-07-04"
@@ -56028,7 +56028,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "IT Analyst",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Non-Standard",
       "preferredContact": "Mail",
       "customerSince": "2019-03-04"
@@ -56928,7 +56928,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Teacher",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Email",
       "customerSince": "2019-07-10"
@@ -57108,7 +57108,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Engineer",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "High Risk",
       "preferredContact": "Phone",
       "customerSince": "2020-07-13"
@@ -57198,7 +57198,7 @@
     "profile": {
       "maritalStatus": "Widowed",
       "occupation": "Sales Rep",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Preferred",
       "preferredContact": "Mail",
       "customerSince": "2018-12-21"
@@ -57408,7 +57408,7 @@
     "profile": {
       "maritalStatus": "Divorced",
       "occupation": "Retired",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "High Risk",
       "preferredContact": "Email",
       "customerSince": "2019-04-12"
@@ -58068,7 +58068,7 @@
     "profile": {
       "maritalStatus": "Single",
       "occupation": "Teacher",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Phone",
       "customerSince": "2020-04-14"
@@ -58458,7 +58458,7 @@
     "profile": {
       "maritalStatus": "Single",
       "occupation": "Contractor",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Phone",
       "customerSince": "2018-08-01"
@@ -59808,7 +59808,7 @@
     "profile": {
       "maritalStatus": "Married",
       "occupation": "Self-Employed",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2022-09-18"
@@ -60138,7 +60138,7 @@
     "profile": {
       "maritalStatus": "Single",
       "occupation": "Attorney",
-      "creditScore": NaN,
+      "creditScore": null,
       "riskTier": "Standard",
       "preferredContact": "Email",
       "customerSince": "2017-08-06"
