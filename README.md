@@ -1,4 +1,4 @@
-# P&C Insurance Data Pipeline — Bootcamp Project
+# P&C Insurance Data Pipeline
 
 ## Overview
 End-to-end Azure Synapse Analytics data pipeline for Property & Casualty Insurance.
