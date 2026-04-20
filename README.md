@@ -1,4 +1,4 @@
-# P&C Insurance Data Pipeline
+# P&C Insurance Data Pipeline — Bootcamp Project
 
 ## Overview
 End-to-end Azure Synapse Analytics data pipeline for Property & Casualty Insurance.
@@ -140,8 +140,37 @@ sql/
 ```
 
 ## Power BI Dashboard
-- **Executive Summary**: KPIs — Total Premiums, Policies, Claims, Loss Ratio
-- **Claims & Policy Analysis**: Claims by Peril Type, Status, LOB
+
+### Page 1 — Executive Summary
+![Executive Summary](Executive_Summary.png)
+
+| KPI | Value |
+|---|---|
+| Total Premiums | $64.79M |
+| Total Policies | 5,000 |
+| Total Claims | 10K |
+| Loss Ratio | 304.31% |
+| Open Claims | 2,013 |
+| Avg Settlement Days | 306.21 |
+
+**Visuals:** Total Policies by Line of Business, Total Claims by Status, Premium Distribution by State (map), Total Claims by Month, Fraud & CAT Claims by Status.
+
+---
+
+### Page 2 — Claims & Policy Analysis
+![Claims and Policy Analysis](Claims_and_Policy_Analysis.png)
+
+| KPI | Value |
+|---|---|
+| Total Claims | 10K |
+| Open Claims | 2,013 |
+| Fraud Claims | 38 |
+| CAT Claims | 145 |
+| Avg Settlement Days | 306.21 |
+
+**Visuals:** Claims by Peril Type, Claims by Status, Policies by Line of Business, Policies by Status.
+
+> **Note on Loss Ratio (304.31%):** This reflects intentional data quality issues in source data — settlement amounts contain NULL/N/A values. In production this would be resolved through stricter Bronze validation.
 
 ## Data Quality Issues (Intentional)
 | Table | Issue | Count |
