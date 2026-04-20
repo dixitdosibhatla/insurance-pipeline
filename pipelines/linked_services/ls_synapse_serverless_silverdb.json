@@ -1,0 +1,20 @@
+{
+  "name": "ls_synapse_serverless_silverdb",
+  "type": "Microsoft.Synapse/workspaces/linkedservices",
+  "properties": {
+    "description": "Serverless SQL connection for Silver layer",
+    "annotations": [],
+    "type": "AzureSqlDW",
+    "typeProperties": {
+      "server": "<SYNAPSE_SERVERLESS_ENDPOINT>",
+      "database": "<SILVER_DATABASE>",
+      "encrypt": "mandatory",
+      "trustServerCertificate": false,
+      "authenticationType": "SystemAssignedManagedIdentity"
+    },
+    "connectVia": {
+      "referenceName": "AutoResolveIntegrationRuntime",
+      "type": "IntegrationRuntimeReference"
+    }
+  }
+}

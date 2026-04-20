@@ -1,0 +1,21 @@
+{
+  "name": "ls_sqlserver_onprem",
+  "type": "Microsoft.Synapse/workspaces/linkedservices",
+  "properties": {
+    "annotations": [],
+    "type": "SqlServer",
+    "typeProperties": {
+      "server": "<ONPREM_SQL_SERVER>",
+      "database": "<SOURCE_DATABASE>",
+      "encrypt": "mandatory",
+      "trustServerCertificate": true,
+      "authenticationType": "Windows",
+      "userName": "<WINDOWS_USER>",
+      "encryptedCredential": "<REDACTED>"
+    },
+    "connectVia": {
+      "referenceName": "<SELF_HOSTED_IR>",
+      "type": "IntegrationRuntimeReference"
+    }
+  }
+}

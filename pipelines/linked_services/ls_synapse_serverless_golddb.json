@@ -1,0 +1,19 @@
+{
+  "name": "ls_synapse_serverless_golddb",
+  "type": "Microsoft.Synapse/workspaces/linkedservices",
+  "properties": {
+    "annotations": [],
+    "type": "AzureSqlDW",
+    "typeProperties": {
+      "server": "<SYNAPSE_SERVERLESS_ENDPOINT>",
+      "database": "<GOLD_DATABASE>",
+      "encrypt": "mandatory",
+      "trustServerCertificate": false,
+      "authenticationType": "SystemAssignedManagedIdentity"
+    },
+    "connectVia": {
+      "referenceName": "AutoResolveIntegrationRuntime",
+      "type": "IntegrationRuntimeReference"
+    }
+  }
+}
