@@ -125,6 +125,9 @@ sql/
 ├── onprem/
 │   ├── 01_ddl_onprem.sql
 │   └── 02_watermark_setup.sql
+│   └── 03_dml_onprem.sql
+│   └── sp_silver_watermark_update.sql
+│   └── sp_watermark_update.sql
 ├── silver/
 │   ├── 01_silver_db_setup.sql
 │   ├── 02_silver_coverage.sql
