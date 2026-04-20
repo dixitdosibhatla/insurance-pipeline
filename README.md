@@ -1,4 +1,4 @@
-# P&C Insurance Data Pipeline
+# P&C Insurance Data Pipeline — Bootcamp Project
 
 ## Overview
 End-to-end Azure Synapse Analytics data pipeline for Property & Casualty Insurance.
@@ -6,46 +6,25 @@ Implements a Medallion Architecture (Bronze → Silver → Gold) with incrementa
 SCD Type 1 & 2, and a Power BI dashboard.
 
 ## Architecture
+
+![P&C Insurance Data Pipeline Architecture](P_C_Insurance_Pipeline_Architecture.png)
+
+### Layer Summary
+
+| Layer | Purpose | Storage | Format |
+|---|---|---|---|
+| **Sources** | On-Prem SQL Server + GitHub HTTP API | Local / GitHub | SQL Tables / JSON |
+| **Bronze** | Raw data — no transformations | ADLS Gen2 | JSON + CSV |
+| **Silver** | Cleaned, validated, deduplicated | ADLS Gen2 | Parquet |
+| **Gold** | Star schema — business analytics ready | ADLS Gen2 | Parquet |
+| **Serving** | Power BI Reporting | Power BI Service | DirectQuery / Import |
+
+### Data Flow
 ```
-On-Prem SQL Server          GitHub (HTTP)
-(policy, claims,            (customer.json)
- agent, coverage)                │
-        │                        │
-        ▼                        ▼
-   ┌─────────────────────────────────┐
-   │         BRONZE LAYER            │
-   │  Raw data in ADLS               │
-   │  - customer.json (full)         │
-   │  - agent.csv (full)             │
-   │  - coverage.csv (full)          │
-   │  - policy_YYYYMMDDHHMMSS.csv    │
-   │  - claims_YYYYMMDDHHMMSS.csv    │
-   └─────────────────────────────────┘
-                    │
-                    ▼
-   ┌─────────────────────────────────┐
-   │         SILVER LAYER            │
-   │  Clean, validated Parquet       │
-   │  - silver_coverage (full)       │
-   │  - silver_agent (full)          │
-   │  - silver_customer (incr.)      │
-   │  - silver_policy (incr.)        │
-   │  - silver_claims (incr.)        │
-   └─────────────────────────────────┘
-                    │
-                    ▼
-   ┌─────────────────────────────────┐
-   │          GOLD LAYER             │
-   │  Star schema for analytics      │
-   │  - dim_coverage                 │
-   │  - dim_agent                    │
-   │  - dim_customer (SCD Type 1)    │
-   │  - dim_policy (SCD Type 2)      │
-   │  - fact_claims (SCD Type 2)     │
-   └─────────────────────────────────┘
-                    │
-                    ▼
-            Power BI Dashboard
+Sources → Synapse Pipeline (Copy Activity) → Bronze (Raw)
+Bronze  → Synapse Pipeline (Script Activity) → Silver (Cleaned)
+Silver  → Synapse Pipeline (Script Activity) → Gold (Star Schema)
+Gold    → Power BI → Dashboard
 ```
 
 ## Azure Resources
