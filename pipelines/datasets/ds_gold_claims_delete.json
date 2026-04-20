@@ -1,0 +1,18 @@
+{
+    "name": "ds_gold_claims_delete",
+    "type": "Microsoft.Synapse/workspaces/datasets",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "ls_storage_gold",
+            "type": "LinkedServiceReference"
+        },
+        "type": "Binary",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "folderPath": "fact_claims",
+                "fileSystem": "gold"
+            }
+        }
+    }
+}

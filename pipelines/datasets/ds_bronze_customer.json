@@ -1,0 +1,19 @@
+{
+    "name": "ds_bronze_customer",
+    "type": "Microsoft.Synapse/workspaces/datasets",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "ls_storage_bronze",
+            "type": "LinkedServiceReference"
+        },
+        "type": "Json",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "customer.json",
+                "folderPath": "customer",
+                "fileSystem": "bronze"
+            }
+        }
+    }
+}

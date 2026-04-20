@@ -1,0 +1,24 @@
+{
+    "name": "ds_bronze_policy",
+    "type": "Microsoft.Synapse/workspaces/datasets",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "ls_storage_bronze",
+            "type": "LinkedServiceReference"
+        },
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": {
+                    "value": "@concat('policy_', formatDateTime(utcNow(), 'yyyyMMddHHmmss'), '.csv')",
+                    "type": "Expression"
+                },
+                "folderPath": "policy",
+                "fileSystem": "bronze"
+            },
+            "columnDelimiter": ",",
+            "firstRowAsHeader": true
+        }
+    }
+}

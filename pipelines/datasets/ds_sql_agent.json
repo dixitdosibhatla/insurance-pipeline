@@ -1,0 +1,15 @@
+{
+    "name": "ds_sql_agent",
+    "type": "Microsoft.Synapse/workspaces/datasets",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "ls_sql_onprem",
+            "type": "LinkedServiceReference"
+        },
+        "type": "SqlServerTable",
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "agent"
+        }
+    }
+}

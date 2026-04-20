@@ -1,0 +1,39 @@
+{
+    "name": "ds_serverless_silver",
+    "type": "Microsoft.Synapse/workspaces/datasets",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "ls_synapse_silver",
+            "type": "LinkedServiceReference"
+        },
+        "type": "AzureSqlDWTable",
+        "schema": [
+            { "name": "customer_id", "type": "varchar" },
+            { "name": "first_name", "type": "varchar" },
+            { "name": "last_name", "type": "varchar" },
+            { "name": "email", "type": "varchar" },
+            { "name": "phone", "type": "varchar" },
+            { "name": "date_of_birth", "type": "date" },
+            { "name": "gender", "type": "varchar" },
+            { "name": "address_street", "type": "varchar" },
+            { "name": "address_suite", "type": "varchar" },
+            { "name": "address_city", "type": "varchar" },
+            { "name": "address_state", "type": "varchar" },
+            { "name": "zip_code", "type": "varchar" },
+            { "name": "marital_status", "type": "varchar" },
+            { "name": "occupation", "type": "varchar" },
+            { "name": "credit_score", "type": "int" },
+            { "name": "risk_tier", "type": "varchar" },
+            { "name": "preferred_contact", "type": "varchar" },
+            { "name": "customer_since", "type": "date" },
+            { "name": "source_system", "type": "varchar" },
+            { "name": "created_date", "type": "date" },
+            { "name": "modified_date", "type": "date" },
+            { "name": "silver_load_date", "type": "date" }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "silver_customer"
+        }
+    }
+}

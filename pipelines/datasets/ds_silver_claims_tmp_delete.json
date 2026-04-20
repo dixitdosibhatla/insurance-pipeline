@@ -1,0 +1,18 @@
+{
+    "name": "ds_silver_claims_tmp_delete",
+    "type": "Microsoft.Synapse/workspaces/datasets",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "ls_storage_silver",
+            "type": "LinkedServiceReference"
+        },
+        "type": "Binary",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "folderPath": "claims_tmp",
+                "fileSystem": "silver"
+            }
+        }
+    }
+}
