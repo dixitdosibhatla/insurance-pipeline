@@ -1,0 +1,296 @@
+{
+    "name": "pl_ingest_sql_bronze",
+    "properties": {
+        "activities": [
+            {
+                "name": "copy_agent_to_bronze",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.00:10:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlServerSource",
+                        "queryTimeout": "02:00:00",
+                        "partitionOption": "None"
+                    },
+                    "sink": {
+                        "type": "DelimitedTextSink",
+                        "storeSettings": {
+                            "type": "AzureBlobFSWriteSettings",
+                            "copyBehavior": "FlattenHierarchy"
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextWriteSettings",
+                            "quoteAllText": true,
+                            "fileExtension": ".csv"
+                        }
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                },
+                "inputs": [
+                    { "referenceName": "ds_sql_agent", "type": "DatasetReference" }
+                ],
+                "outputs": [
+                    { "referenceName": "ds_bronze_agent", "type": "DatasetReference" }
+                ]
+            },
+
+            {
+                "name": "copy_coverage_to_bronze",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.00:10:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlServerSource",
+                        "queryTimeout": "02:00:00",
+                        "partitionOption": "None"
+                    },
+                    "sink": {
+                        "type": "DelimitedTextSink",
+                        "storeSettings": {
+                            "type": "AzureBlobFSWriteSettings",
+                            "copyBehavior": "FlattenHierarchy"
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextWriteSettings",
+                            "quoteAllText": true,
+                            "fileExtension": ".csv"
+                        }
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                },
+                "inputs": [
+                    { "referenceName": "ds_sql_coverage", "type": "DatasetReference" }
+                ],
+                "outputs": [
+                    { "referenceName": "ds_bronze_coverage", "type": "DatasetReference" }
+                ]
+            },
+
+            {
+                "name": "copy_policy_to_bronze",
+                "type": "Copy",
+                "dependsOn": [
+                    { "activity": "lookup_policy_watermark", "dependencyConditions": ["Succeeded"] }
+                ],
+                "policy": {
+                    "timeout": "0.00:10:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlServerSource",
+                        "sqlReaderQuery": {
+                            "value": "@concat('SELECT * FROM <SOURCE_SCHEMA>.policy WHERE modified_date > ''', activity('lookup_policy_watermark').output.firstRow.last_load_date, '''')",
+                            "type": "Expression"
+                        },
+                        "queryTimeout": "02:00:00",
+                        "partitionOption": "None"
+                    },
+                    "sink": {
+                        "type": "DelimitedTextSink",
+                        "storeSettings": {
+                            "type": "AzureBlobFSWriteSettings",
+                            "copyBehavior": "FlattenHierarchy"
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextWriteSettings",
+                            "quoteAllText": true,
+                            "fileExtension": ".csv"
+                        }
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                },
+                "inputs": [
+                    { "referenceName": "ds_sql_policy", "type": "DatasetReference" }
+                ],
+                "outputs": [
+                    { "referenceName": "ds_bronze_policy", "type": "DatasetReference" }
+                ]
+            },
+
+            {
+                "name": "copy_claims_to_bronze",
+                "type": "Copy",
+                "dependsOn": [
+                    { "activity": "lookup_claims_watermark", "dependencyConditions": ["Succeeded"] }
+                ],
+                "policy": {
+                    "timeout": "0.00:10:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlServerSource",
+                        "sqlReaderQuery": {
+                            "value": "@concat('SELECT * FROM <SOURCE_SCHEMA>.claims WHERE modified_date > ''', activity('lookup_claims_watermark').output.firstRow.last_load_date, '''')",
+                            "type": "Expression"
+                        },
+                        "queryTimeout": "02:00:00",
+                        "partitionOption": "None"
+                    },
+                    "sink": {
+                        "type": "DelimitedTextSink",
+                        "storeSettings": {
+                            "type": "AzureBlobFSWriteSettings",
+                            "copyBehavior": "FlattenHierarchy"
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextWriteSettings",
+                            "quoteAllText": true,
+                            "fileExtension": ".csv"
+                        }
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                },
+                "inputs": [
+                    { "referenceName": "ds_sql_claims", "type": "DatasetReference" }
+                ],
+                "outputs": [
+                    { "referenceName": "ds_bronze_claims", "type": "DatasetReference" }
+                ]
+            },
+
+            {
+                "name": "lookup_policy_watermark",
+                "type": "Lookup",
+                "dependsOn": [
+                    { "activity": "copy_agent_to_bronze", "dependencyConditions": ["Succeeded"] },
+                    { "activity": "copy_coverage_to_bronze", "dependencyConditions": ["Succeeded"] }
+                ],
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlServerSource",
+                        "sqlReaderQuery": {
+                            "value": "SELECT last_load_date FROM <CONTROL_SCHEMA>.pipeline_watermark WHERE table_name = 'policy'",
+                            "type": "Expression"
+                        }
+                    },
+                    "dataset": {
+                        "referenceName": "ds_sql_watermark",
+                        "type": "DatasetReference"
+                    }
+                }
+            },
+
+            {
+                "name": "update_policy_watermark",
+                "type": "SqlServerStoredProcedure",
+                "dependsOn": [
+                    { "activity": "copy_policy_to_bronze", "dependencyConditions": ["Succeeded"] }
+                ],
+                "typeProperties": {
+                    "storedProcedureName": "[<SCHEMA>].[usp_update_watermark]",
+                    "storedProcedureParameters": {
+                        "table_name": {
+                            "value": "policy",
+                            "type": "String"
+                        }
+                    }
+                },
+                "linkedServiceName": {
+                    "referenceName": "ls_sqlserver_onprem",
+                    "type": "LinkedServiceReference"
+                }
+            },
+
+            {
+                "name": "lookup_claims_watermark",
+                "type": "Lookup",
+                "dependsOn": [
+                    { "activity": "update_policy_watermark", "dependencyConditions": ["Succeeded"] }
+                ],
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlServerSource",
+                        "sqlReaderQuery": {
+                            "value": "SELECT last_load_date FROM <CONTROL_SCHEMA>.pipeline_watermark WHERE table_name = 'claims'",
+                            "type": "Expression"
+                        }
+                    },
+                    "dataset": {
+                        "referenceName": "ds_sql_watermark",
+                        "type": "DatasetReference"
+                    }
+                }
+            },
+
+            {
+                "name": "update_claims_watermark",
+                "type": "SqlServerStoredProcedure",
+                "dependsOn": [
+                    { "activity": "copy_claims_to_bronze", "dependencyConditions": ["Succeeded"] }
+                ],
+                "typeProperties": {
+                    "storedProcedureName": "[<SCHEMA>].[usp_update_watermark]",
+                    "storedProcedureParameters": {
+                        "table_name": {
+                            "value": "claims",
+                            "type": "String"
+                        }
+                    }
+                },
+                "linkedServiceName": {
+                    "referenceName": "ls_sqlserver_onprem",
+                    "type": "LinkedServiceReference"
+                }
+            }
+        ],
+        "annotations": [
+            "Sanitized version - no sensitive schema or database identifiers exposed"
+        ],
+        "lastPublishTime": "2026-04-17T23:08:44Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

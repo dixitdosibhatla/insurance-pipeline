@@ -1,0 +1,59 @@
+{
+    "name": "pl_ingest_http_bronze",
+    "properties": {
+        "activities": [
+            {
+                "name": "copy_customer_to_bronze",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.00:10:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "source": {
+                        "type": "JsonSource",
+                        "storeSettings": {
+                            "type": "HttpReadSettings",
+                            "requestMethod": "GET"
+                        },
+                        "formatSettings": {
+                            "type": "JsonReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "JsonSink",
+                        "storeSettings": {
+                            "type": "AzureBlobFSWriteSettings",
+                            "copyBehavior": "FlattenHierarchy"
+                        },
+                        "formatSettings": {
+                            "type": "JsonWriteSettings"
+                        }
+                    },
+                    "enableStaging": false
+                },
+                "inputs": [
+                    {
+                        "referenceName": "ds_http_customer",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "ds_bronze_customer",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
+        ],
+        "annotations": [
+            "Sanitized version - no sensitive endpoints exposed"
+        ],
+        "lastPublishTime": "2026-04-17T22:08:02Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

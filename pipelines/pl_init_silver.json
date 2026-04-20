@@ -1,0 +1,163 @@
+{
+    "name": "pl_init_silver",
+    "properties": {
+        "activities": [
+            {
+                "name": "script_drop_silver_tables",
+                "type": "Script",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.00:10:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "linkedServiceName": {
+                    "referenceName": "ls_synapse_serverless_silverdb",
+                    "type": "LinkedServiceReference"
+                },
+                "typeProperties": {
+                    "scripts": [
+                        {
+                            "type": "NonQuery",
+                            "text": {
+                                "value": "USE <SILVER_DB>;\n\nIF EXISTS (SELECT * FROM sys.external_tables WHERE name = 'silver_coverage')\n    DROP EXTERNAL TABLE silver_coverage;\nIF EXISTS (SELECT * FROM sys.external_tables WHERE name = 'silver_agent')\n    DROP EXTERNAL TABLE silver_agent;\nIF EXISTS (SELECT * FROM sys.external_tables WHERE name = 'silver_customer')\n    DROP EXTERNAL TABLE silver_customer;\nIF EXISTS (SELECT * FROM sys.external_tables WHERE name = 'silver_customer_tmp')\n    DROP EXTERNAL TABLE silver_customer_tmp;\nIF EXISTS (SELECT * FROM sys.external_tables WHERE name = 'silver_policy')\n    DROP EXTERNAL TABLE silver_policy;\nIF EXISTS (SELECT * FROM sys.external_tables WHERE name = 'silver_policy_tmp')\n    DROP EXTERNAL TABLE silver_policy_tmp;\nIF EXISTS (SELECT * FROM sys.external_tables WHERE name = 'silver_claims')\n    DROP EXTERNAL TABLE silver_claims;\nIF EXISTS (SELECT * FROM sys.external_tables WHERE name = 'silver_claims_tmp')\n    DROP EXTERNAL TABLE silver_claims_tmp;",
+                                "type": "Expression"
+                            }
+                        }
+                    ],
+                    "scriptBlockExecutionTimeout": "02:00:00"
+                }
+            },
+
+            {
+                "name": "script_create_empty_silver_tables",
+                "type": "Script",
+                "dependsOn": [
+                    { "activity": "delete_silver_coverage", "dependencyConditions": ["Succeeded"] },
+                    { "activity": "delete_silver_agent", "dependencyConditions": ["Succeeded"] },
+                    { "activity": "delete_silver_customer_tmp", "dependencyConditions": ["Succeeded"] },
+                    { "activity": "delete_silver_customer", "dependencyConditions": ["Succeeded"] },
+                    { "activity": "delete_silver_policy_tmp", "dependencyConditions": ["Succeeded"] },
+                    { "activity": "delete_silver_policy", "dependencyConditions": ["Succeeded"] },
+                    { "activity": "delete_silver_claims_tmp", "dependencyConditions": ["Succeeded"] },
+                    { "activity": "delete_silver_claims", "dependencyConditions": ["Succeeded"] }
+                ],
+                "policy": {
+                    "timeout": "0.00:10:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "linkedServiceName": {
+                    "referenceName": "ls_synapse_serverless_silverdb",
+                    "type": "LinkedServiceReference"
+                },
+                "typeProperties": {
+                    "scripts": [
+                        {
+                            "type": "NonQuery",
+                            "text": {
+                                "value": "USE <SILVER_DB>;\n\n-- coverage\nCREATE EXTERNAL TABLE silver_coverage\nWITH (\n    LOCATION    = 'silver/coverage/',\n    DATA_SOURCE = <SILVER_ADLS>,\n    FILE_FORMAT = <PARQUET_FORMAT>\n)\nAS SELECT CAST(NULL AS VARCHAR(10)) AS coverage_id WHERE 1 = 0;\n\n-- agent\nCREATE EXTERNAL TABLE silver_agent\nWITH (\n    LOCATION    = 'silver/agent/',\n    DATA_SOURCE = <SILVER_ADLS>,\n    FILE_FORMAT = <PARQUET_FORMAT>\n)\nAS SELECT CAST(NULL AS VARCHAR(10)) AS agent_id WHERE 1 = 0;\n\n-- customer\nCREATE EXTERNAL TABLE silver_customer\nWITH (\n    LOCATION    = 'silver/customer/',\n    DATA_SOURCE = <SILVER_ADLS>,\n    FILE_FORMAT = <PARQUET_FORMAT>\n)\nAS SELECT CAST(NULL AS VARCHAR(20)) AS customer_id WHERE 1 = 0;\n\n-- policy\nCREATE EXTERNAL TABLE silver_policy\nWITH (\n    LOCATION    = 'silver/policy/',\n    DATA_SOURCE = <SILVER_ADLS>,\n    FILE_FORMAT = <PARQUET_FORMAT>\n)\nAS SELECT CAST(NULL AS VARCHAR(15)) AS policy_id WHERE 1 = 0;\n\n-- claims\nCREATE EXTERNAL TABLE silver_claims\nWITH (\n    LOCATION    = 'silver/claims/',\n    DATA_SOURCE = <SILVER_ADLS>,\n    FILE_FORMAT = <PARQUET_FORMAT>\n)\nAS SELECT CAST(NULL AS VARCHAR(15)) AS claim_id WHERE 1 = 0;",
+                                "type": "Expression"
+                            }
+                        }
+                    ],
+                    "scriptBlockExecutionTimeout": "02:00:00"
+                }
+            },
+
+            {
+                "name": "sp_reset_silver_watermarks",
+                "type": "Script",
+                "dependsOn": [
+                    {
+                        "activity": "script_create_empty_silver_tables",
+                        "dependencyConditions": ["Succeeded"]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.00:10:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "linkedServiceName": {
+                    "referenceName": "ls_sqlserver_onprem",
+                    "type": "LinkedServiceReference"
+                },
+                "typeProperties": {
+                    "scripts": [
+                        {
+                            "type": "NonQuery",
+                            "text": {
+                                "value": "EXEC dbo.usp_update_silver_watermark 'silver_customer', '1900-01-01';\nEXEC dbo.usp_update_silver_watermark 'silver_policy', '1900-01-01';\nEXEC dbo.usp_update_silver_watermark 'silver_claims', '1900-01-01';",
+                                "type": "Expression"
+                            }
+                        }
+                    ],
+                    "scriptBlockExecutionTimeout": "02:00:00"
+                }
+            },
+
+            {
+                "name": "delete_silver_coverage",
+                "type": "Delete",
+                "dependsOn": [{ "activity": "script_drop_silver_tables", "dependencyConditions": ["Succeeded"] }],
+                "typeProperties": { "dataset": { "referenceName": "ds_silver_coverage_delete", "type": "DatasetReference" }, "storeSettings": { "type": "AzureBlobFSReadSettings", "recursive": true } }
+            },
+            {
+                "name": "delete_silver_agent",
+                "type": "Delete",
+                "dependsOn": [{ "activity": "script_drop_silver_tables", "dependencyConditions": ["Succeeded"] }],
+                "typeProperties": { "dataset": { "referenceName": "ds_silver_agent_delete", "type": "DatasetReference" }, "storeSettings": { "type": "AzureBlobFSReadSettings", "recursive": true } }
+            },
+            {
+                "name": "delete_silver_customer_tmp",
+                "type": "Delete",
+                "dependsOn": [{ "activity": "script_drop_silver_tables", "dependencyConditions": ["Succeeded"] }],
+                "typeProperties": { "dataset": { "referenceName": "ds_silver_customer_tmp_delete", "type": "DatasetReference" }, "storeSettings": { "type": "AzureBlobFSReadSettings", "recursive": true } }
+            },
+            {
+                "name": "delete_silver_customer",
+                "type": "Delete",
+                "dependsOn": [{ "activity": "script_drop_silver_tables", "dependencyConditions": ["Succeeded"] }],
+                "typeProperties": { "dataset": { "referenceName": "ds_silver_customer_delete", "type": "DatasetReference" }, "storeSettings": { "type": "AzureBlobFSReadSettings", "recursive": true } }
+            },
+            {
+                "name": "delete_silver_policy_tmp",
+                "type": "Delete",
+                "dependsOn": [{ "activity": "script_drop_silver_tables", "dependencyConditions": ["Succeeded"] }],
+                "typeProperties": { "dataset": { "referenceName": "ds_silver_policy_tmp_delete", "type": "DatasetReference" }, "storeSettings": { "type": "AzureBlobFSReadSettings", "recursive": true } }
+            },
+            {
+                "name": "delete_silver_policy",
+                "type": "Delete",
+                "dependsOn": [{ "activity": "script_drop_silver_tables", "dependencyConditions": ["Succeeded"] }],
+                "typeProperties": { "dataset": { "referenceName": "ds_silver_policy_delete", "type": "DatasetReference" }, "storeSettings": { "type": "AzureBlobFSReadSettings", "recursive": true } }
+            },
+            {
+                "name": "delete_silver_claims_tmp",
+                "type": "Delete",
+                "dependsOn": [{ "activity": "script_drop_silver_tables", "dependencyConditions": ["Succeeded"] }],
+                "typeProperties": { "dataset": { "referenceName": "ds_silver_claims_tmp_delete", "type": "DatasetReference" }, "storeSettings": { "type": "AzureBlobFSReadSettings", "recursive": true } }
+            },
+            {
+                "name": "delete_silver_claims",
+                "type": "Delete",
+                "dependsOn": [{ "activity": "script_drop_silver_tables", "dependencyConditions": ["Succeeded"] }],
+                "typeProperties": { "dataset": { "referenceName": "ds_silver_claims_delete", "type": "DatasetReference" }, "storeSettings": { "type": "AzureBlobFSReadSettings", "recursive": true } }
+            }
+        ],
+        "annotations": [
+            "Sanitized version - no sensitive data exposed"
+        ],
+        "lastPublishTime": "2026-04-19T23:55:11Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

@@ -1,0 +1,188 @@
+{
+    "name": "pl_transform_silver",
+    "properties": {
+        "activities": [
+            {
+                "name": "validate_bronze_coverage",
+                "type": "Script",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.00:10:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "linkedServiceName": {
+                    "referenceName": "ls_synapse_serverless_silverdb",
+                    "type": "LinkedServiceReference"
+                },
+                "typeProperties": {
+                    "scripts": [
+                        {
+                            "type": "Query",
+                            "text": {
+                                "value": "SELECT 'coverage' AS table_name, COUNT(*) AS row_count FROM OPENROWSET(BULK 'bronze/coverage/*.csv', DATA_SOURCE = 'silver_adls', FORMAT = 'CSV', PARSER_VERSION = '2.0', HEADER_ROW = TRUE) AS raw;",
+                                "type": "Expression"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "if_coverage_valid",
+                "type": "IfCondition",
+                "dependsOn": [
+                    {
+                        "activity": "validate_bronze_coverage",
+                        "dependencyConditions": ["Succeeded"]
+                    }
+                ],
+                "typeProperties": {
+                    "expression": {
+                        "value": "@equals(activity('validate_bronze_coverage').output.resultSets[0].rows[0].check_status, 'PASS')",
+                        "type": "Expression"
+                    },
+                    "ifFalseActivities": [
+                        {
+                            "name": "log_coverage_validation_failure",
+                            "type": "Script",
+                            "linkedServiceName": {
+                                "referenceName": "ls_sqlserver_onprem",
+                                "type": "LinkedServiceReference"
+                            },
+                            "typeProperties": {
+                                "scripts": [
+                                    {
+                                        "type": "NonQuery",
+                                        "text": {
+                                            "value": "INSERT INTO <CONTROL_SCHEMA>.pipeline_validation_log (pipeline_run_id, layer, table_name, check_name, check_status, actual_value, error_message) VALUES ('coverage_validation_failed','BRONZE','coverage','Bronze Validation','FAIL','check_status = FAIL','Bronze coverage validation failed — Silver transformation skipped');",
+                                            "type": "Expression"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "lookup_silver_customer_watermark",
+                "type": "Lookup",
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlServerSource",
+                        "sqlReaderQuery": {
+                            "value": "SELECT last_load_date FROM <CONTROL_SCHEMA>.pipeline_watermark WHERE table_name = 'silver_customer'",
+                            "type": "Expression"
+                        }
+                    },
+                    "dataset": {
+                        "referenceName": "ds_sql_watermark",
+                        "type": "DatasetReference"
+                    }
+                }
+            },
+            {
+                "name": "sp_update_silver_customer_watermark",
+                "type": "SqlServerStoredProcedure",
+                "linkedServiceName": {
+                    "referenceName": "ls_sqlserver_onprem",
+                    "type": "LinkedServiceReference"
+                },
+                "typeProperties": {
+                    "storedProcedureName": "[<SCHEMA>].[usp_update_silver_watermark]",
+                    "storedProcedureParameters": {
+                        "table_name": {
+                            "value": "silver_customer",
+                            "type": "String"
+                        }
+                    }
+                }
+            },
+            {
+                "name": "lookup_silver_policy_watermark",
+                "type": "Lookup",
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlServerSource",
+                        "sqlReaderQuery": {
+                            "value": "SELECT last_load_date FROM <CONTROL_SCHEMA>.pipeline_watermark WHERE table_name = 'silver_policy'",
+                            "type": "Expression"
+                        }
+                    },
+                    "dataset": {
+                        "referenceName": "ds_sql_watermark",
+                        "type": "DatasetReference"
+                    }
+                }
+            },
+            {
+                "name": "sp_update_silver_policy_watermark",
+                "type": "SqlServerStoredProcedure",
+                "linkedServiceName": {
+                    "referenceName": "ls_sqlserver_onprem",
+                    "type": "LinkedServiceReference"
+                },
+                "typeProperties": {
+                    "storedProcedureName": "[<SCHEMA>].[usp_update_silver_watermark]",
+                    "storedProcedureParameters": {
+                        "table_name": {
+                            "value": "silver_policy",
+                            "type": "String"
+                        }
+                    }
+                }
+            },
+            {
+                "name": "lookup_silver_claims_watermark",
+                "type": "Lookup",
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlServerSource",
+                        "sqlReaderQuery": {
+                            "value": "SELECT last_load_date FROM <CONTROL_SCHEMA>.pipeline_watermark WHERE table_name = 'silver_claims'",
+                            "type": "Expression"
+                        }
+                    },
+                    "dataset": {
+                        "referenceName": "ds_sql_watermark",
+                        "type": "DatasetReference"
+                    }
+                }
+            },
+            {
+                "name": "sp_update_silver_claims_watermark",
+                "type": "SqlServerStoredProcedure",
+                "linkedServiceName": {
+                    "referenceName": "ls_sqlserver_onprem",
+                    "type": "LinkedServiceReference"
+                },
+                "typeProperties": {
+                    "storedProcedureName": "[<SCHEMA>].[usp_update_silver_watermark]",
+                    "storedProcedureParameters": {
+                        "table_name": {
+                            "value": "silver_claims",
+                            "type": "String"
+                        }
+                    }
+                }
+            }
+        ],
+        "variables": {
+            "v_silver_customer_watermark": {
+                "type": "String",
+                "defaultValue": "1900-01-01"
+            },
+            "v_silver_policy_watermark": {
+                "type": "String",
+                "defaultValue": "1900-01-01"
+            },
+            "v_silver_claims_watermark": {
+                "type": "String",
+                "defaultValue": "1900-01-01"
+            }
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

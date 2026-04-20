@@ -1,0 +1,83 @@
+{
+  "name": "pl_master",
+  "properties": {
+    "activities": [
+      {
+        "name": "execute_http_bronze",
+        "type": "ExecutePipeline",
+        "dependsOn": [],
+        "policy": {
+          "secureInput": false
+        },
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "pl_ingest_http_bronze",
+            "type": "PipelineReference"
+          },
+          "waitOnCompletion": true
+        }
+      },
+      {
+        "name": "execute_sql_bronze",
+        "type": "ExecutePipeline",
+        "dependsOn": [],
+        "policy": {
+          "secureInput": false
+        },
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "pl_ingest_sql_bronze",
+            "type": "PipelineReference"
+          },
+          "waitOnCompletion": true
+        }
+      },
+      {
+        "name": "execute_silver",
+        "type": "ExecutePipeline",
+        "dependsOn": [
+          {
+            "activity": "execute_http_bronze",
+            "dependencyConditions": ["Succeeded"]
+          },
+          {
+            "activity": "execute_sql_bronze",
+            "dependencyConditions": ["Succeeded"]
+          }
+        ],
+        "policy": {
+          "secureInput": false
+        },
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "pl_transform_silver",
+            "type": "PipelineReference"
+          },
+          "waitOnCompletion": true
+        }
+      },
+      {
+        "name": "execute_gold",
+        "type": "ExecutePipeline",
+        "dependsOn": [
+          {
+            "activity": "execute_silver",
+            "dependencyConditions": ["Succeeded"]
+          }
+        ],
+        "policy": {
+          "secureInput": false
+        },
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "pl_load_gold",
+            "type": "PipelineReference"
+          },
+          "waitOnCompletion": true
+        }
+      }
+    ],
+    "annotations": []
+  },
+  "type": "Microsoft.Synapse/workspaces/pipelines"
+}

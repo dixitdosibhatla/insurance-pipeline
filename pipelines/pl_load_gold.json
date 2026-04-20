@@ -1,0 +1,127 @@
+{
+  "name": "pl_load_gold",
+  "properties": {
+    "activities": [
+      {
+        "name": "validate_silver_coverage",
+        "type": "Script",
+        "linkedServiceName": {
+          "referenceName": "ls_synapse_serverless_golddb",
+          "type": "LinkedServiceReference"
+        },
+        "typeProperties": {
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "SELECT 'coverage' AS table_name, COUNT(*) AS row_count, SUM(CASE WHEN coverage_id IS NULL OR TRIM(coverage_id) = '' THEN 1 ELSE 0 END) AS null_pk, CASE WHEN COUNT(*) = 0 THEN 'FAIL' WHEN SUM(CASE WHEN coverage_id IS NULL OR TRIM(coverage_id) = '' THEN 1 ELSE 0 END) > 0 THEN 'FAIL' ELSE 'PASS' END AS check_status FROM OPENROWSET(BULK 'silver/coverage/*.parquet', DATA_SOURCE = 'gold_adls', FORMAT = 'PARQUET') WITH (coverage_id VARCHAR(10)) AS raw;",
+                "type": "Expression"
+              }
+            }
+          ]
+        }
+      },
+
+      {
+        "name": "log_coverage_gold_failure",
+        "type": "Script",
+        "linkedServiceName": {
+          "referenceName": "ls_sqlserver_onprem",
+          "type": "LinkedServiceReference"
+        },
+        "typeProperties": {
+          "scripts": [
+            {
+              "type": "NonQuery",
+              "text": {
+                "value": "INSERT INTO <CONTROL_SCHEMA>.pipeline_validation_log (pipeline_run_id, layer, table_name, check_name, check_status, actual_value, error_message) VALUES ('coverage_gold_validation_failed','GOLD','dim_coverage','Silver Validation','FAIL','check_status = FAIL','Silver coverage validation failed — Gold transformation skipped');",
+                "type": "Expression"
+              }
+            }
+          ]
+        }
+      },
+
+      {
+        "name": "log_agent_gold_failure",
+        "type": "Script",
+        "linkedServiceName": {
+          "referenceName": "ls_sqlserver_onprem",
+          "type": "LinkedServiceReference"
+        },
+        "typeProperties": {
+          "scripts": [
+            {
+              "type": "NonQuery",
+              "text": {
+                "value": "INSERT INTO <CONTROL_SCHEMA>.pipeline_validation_log (pipeline_run_id, layer, table_name, check_name, check_status, actual_value, error_message) VALUES ('agent_gold_validation_failed','GOLD','dim_agent','Silver Validation','FAIL','check_status = FAIL','Silver agent validation failed — Gold transformation skipped');",
+                "type": "Expression"
+              }
+            }
+          ]
+        }
+      },
+
+      {
+        "name": "log_customer_gold_failure",
+        "type": "Script",
+        "linkedServiceName": {
+          "referenceName": "ls_sqlserver_onprem",
+          "type": "LinkedServiceReference"
+        },
+        "typeProperties": {
+          "scripts": [
+            {
+              "type": "NonQuery",
+              "text": {
+                "value": "INSERT INTO <CONTROL_SCHEMA>.pipeline_validation_log (pipeline_run_id, layer, table_name, check_name, check_status, actual_value, error_message) VALUES ('customer_gold_validation_failed','GOLD','dim_customer','Silver Validation','FAIL','check_status = FAIL','Silver customer validation failed — Gold transformation skipped');",
+                "type": "Expression"
+              }
+            }
+          ]
+        }
+      },
+
+      {
+        "name": "log_policy_gold_failure",
+        "type": "Script",
+        "linkedServiceName": {
+          "referenceName": "ls_sqlserver_onprem",
+          "type": "LinkedServiceReference"
+        },
+        "typeProperties": {
+          "scripts": [
+            {
+              "type": "NonQuery",
+              "text": {
+                "value": "INSERT INTO <CONTROL_SCHEMA>.pipeline_validation_log (pipeline_run_id, layer, table_name, check_name, check_status, actual_value, error_message) VALUES ('policy_gold_validation_failed','GOLD','dim_policy','Silver Validation','FAIL','check_status = FAIL','Silver policy validation failed — Gold transformation skipped');",
+                "type": "Expression"
+              }
+            }
+          ]
+        }
+      },
+
+      {
+        "name": "log_claims_gold_failure",
+        "type": "Script",
+        "linkedServiceName": {
+          "referenceName": "ls_sqlserver_onprem",
+          "type": "LinkedServiceReference"
+        },
+        "typeProperties": {
+          "scripts": [
+            {
+              "type": "NonQuery",
+              "text": {
+                "value": "INSERT INTO <CONTROL_SCHEMA>.pipeline_validation_log (pipeline_run_id, layer, table_name, check_name, check_status, actual_value, error_message) VALUES ('claims_gold_validation_failed','GOLD','fact_claims','Silver Validation','FAIL','check_status = FAIL','Silver claims validation failed — Gold transformation skipped');",
+                "type": "Expression"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "type": "Microsoft.Synapse/workspaces/pipelines"
+}

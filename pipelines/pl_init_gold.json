@@ -1,0 +1,140 @@
+{
+    "name": "pl_init_gold",
+    "properties": {
+        "activities": [
+            {
+                "name": "script_drop_gold_tables",
+                "type": "Script",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.00:10:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "linkedServiceName": {
+                    "referenceName": "ls_synapse_serverless_golddb",
+                    "type": "LinkedServiceReference"
+                },
+                "typeProperties": {
+                    "scripts": [
+                        {
+                            "type": "NonQuery",
+                            "text": {
+                                "value": "USE <GOLD_DB>;\n\nIF EXISTS (SELECT * FROM sys.external_tables WHERE name = 'dim_coverage') DROP EXTERNAL TABLE dim_coverage;\nIF EXISTS (SELECT * FROM sys.external_tables WHERE name = 'dim_agent') DROP EXTERNAL TABLE dim_agent;\nIF EXISTS (SELECT * FROM sys.external_tables WHERE name = 'dim_customer') DROP EXTERNAL TABLE dim_customer;\nIF EXISTS (SELECT * FROM sys.external_tables WHERE name = 'dim_customer_tmp') DROP EXTERNAL TABLE dim_customer_tmp;\nIF EXISTS (SELECT * FROM sys.external_tables WHERE name = 'dim_policy') DROP EXTERNAL TABLE dim_policy;\nIF EXISTS (SELECT * FROM sys.external_tables WHERE name = 'dim_policy_tmp') DROP EXTERNAL TABLE dim_policy_tmp;\nIF EXISTS (SELECT * FROM sys.external_tables WHERE name = 'fact_claims') DROP EXTERNAL TABLE fact_claims;\nIF EXISTS (SELECT * FROM sys.external_tables WHERE name = 'fact_claims_tmp') DROP EXTERNAL TABLE fact_claims_tmp;",
+                                "type": "Expression"
+                            }
+                        }
+                    ]
+                }
+            },
+
+            {
+                "name": "script_create_empty_gold_tables",
+                "type": "Script",
+                "dependsOn": [
+                    { "activity": "delete_gold_coverage", "dependencyConditions": ["Succeeded"] },
+                    { "activity": "delete_gold_agent", "dependencyConditions": ["Succeeded"] },
+                    { "activity": "delete_gold_customer_tmp", "dependencyConditions": ["Succeeded"] },
+                    { "activity": "delete_gold_customer", "dependencyConditions": ["Succeeded"] },
+                    { "activity": "delete_gold_policy_tmp", "dependencyConditions": ["Succeeded"] },
+                    { "activity": "delete_gold_policy", "dependencyConditions": ["Succeeded"] },
+                    { "activity": "delete_gold_claims_tmp", "dependencyConditions": ["Succeeded"] },
+                    { "activity": "delete_gold_claims", "dependencyConditions": ["Succeeded"] }
+                ],
+                "linkedServiceName": {
+                    "referenceName": "ls_synapse_serverless_silverdb",
+                    "type": "LinkedServiceReference"
+                },
+                "typeProperties": {
+                    "scripts": [
+                        {
+                            "type": "NonQuery",
+                            "text": {
+                                "value": "USE <GOLD_DB>;\n\n-- dim_coverage\nCREATE EXTERNAL TABLE dim_coverage\nWITH (LOCATION='gold/dim_coverage/', DATA_SOURCE=<GOLD_ADLS>, FILE_FORMAT=<PARQUET_FORMAT>)\nAS SELECT CAST(NULL AS VARCHAR(10)) AS coverage_id WHERE 1=0;\n\n-- dim_agent\nCREATE EXTERNAL TABLE dim_agent\nWITH (LOCATION='gold/dim_agent/', DATA_SOURCE=<GOLD_ADLS>, FILE_FORMAT=<PARQUET_FORMAT>)\nAS SELECT CAST(NULL AS VARCHAR(10)) AS agent_id WHERE 1=0;\n\n-- dim_customer\nCREATE EXTERNAL TABLE dim_customer\nWITH (LOCATION='gold/dim_customer/', DATA_SOURCE=<GOLD_ADLS>, FILE_FORMAT=<PARQUET_FORMAT>)\nAS SELECT CAST(NULL AS VARCHAR(20)) AS customer_id WHERE 1=0;\n\n-- dim_policy\nCREATE EXTERNAL TABLE dim_policy\nWITH (LOCATION='gold/dim_policy/', DATA_SOURCE=<GOLD_ADLS>, FILE_FORMAT=<PARQUET_FORMAT>)\nAS SELECT CAST(NULL AS VARCHAR(15)) AS policy_id WHERE 1=0;\n\n-- fact_claims\nCREATE EXTERNAL TABLE fact_claims\nWITH (LOCATION='gold/fact_claims/', DATA_SOURCE=<GOLD_ADLS>, FILE_FORMAT=<PARQUET_FORMAT>)\nAS SELECT CAST(NULL AS VARCHAR(15)) AS claim_id WHERE 1=0;",
+                                "type": "Expression"
+                            }
+                        }
+                    ]
+                }
+            },
+
+            {
+                "name": "delete_gold_coverage",
+                "type": "Delete",
+                "dependsOn": [{ "activity": "script_drop_gold_tables", "dependencyConditions": ["Succeeded"] }],
+                "typeProperties": {
+                    "dataset": { "referenceName": "ds_gold_coverage_delete", "type": "DatasetReference" },
+                    "storeSettings": { "type": "AzureBlobFSReadSettings", "recursive": true }
+                }
+            },
+            {
+                "name": "delete_gold_agent",
+                "type": "Delete",
+                "dependsOn": [{ "activity": "script_drop_gold_tables", "dependencyConditions": ["Succeeded"] }],
+                "typeProperties": {
+                    "dataset": { "referenceName": "ds_gold_agent_delete", "type": "DatasetReference" },
+                    "storeSettings": { "type": "AzureBlobFSReadSettings", "recursive": true }
+                }
+            },
+            {
+                "name": "delete_gold_customer_tmp",
+                "type": "Delete",
+                "dependsOn": [{ "activity": "script_drop_gold_tables", "dependencyConditions": ["Succeeded"] }],
+                "typeProperties": {
+                    "dataset": { "referenceName": "ds_gold_customer_tmp_delete", "type": "DatasetReference" },
+                    "storeSettings": { "type": "AzureBlobFSReadSettings", "recursive": true }
+                }
+            },
+            {
+                "name": "delete_gold_customer",
+                "type": "Delete",
+                "dependsOn": [{ "activity": "script_drop_gold_tables", "dependencyConditions": ["Succeeded"] }],
+                "typeProperties": {
+                    "dataset": { "referenceName": "ds_gold_customer_delete", "type": "DatasetReference" },
+                    "storeSettings": { "type": "AzureBlobFSReadSettings", "recursive": true }
+                }
+            },
+            {
+                "name": "delete_gold_policy_tmp",
+                "type": "Delete",
+                "dependsOn": [{ "activity": "script_drop_gold_tables", "dependencyConditions": ["Succeeded"] }],
+                "typeProperties": {
+                    "dataset": { "referenceName": "ds_gold_policy_tmp_delete", "type": "DatasetReference" },
+                    "storeSettings": { "type": "AzureBlobFSReadSettings", "recursive": true }
+                }
+            },
+            {
+                "name": "delete_gold_policy",
+                "type": "Delete",
+                "dependsOn": [{ "activity": "script_drop_gold_tables", "dependencyConditions": ["Succeeded"] }],
+                "typeProperties": {
+                    "dataset": { "referenceName": "ds_gold_policy_delete", "type": "DatasetReference" },
+                    "storeSettings": { "type": "AzureBlobFSReadSettings", "recursive": true }
+                }
+            },
+            {
+                "name": "delete_gold_claims_tmp",
+                "type": "Delete",
+                "dependsOn": [{ "activity": "script_drop_gold_tables", "dependencyConditions": ["Succeeded"] }],
+                "typeProperties": {
+                    "dataset": { "referenceName": "ds_gold_claims_tmp_delete", "type": "DatasetReference" },
+                    "storeSettings": { "type": "AzureBlobFSReadSettings", "recursive": true }
+                }
+            },
+            {
+                "name": "delete_gold_claims",
+                "type": "Delete",
+                "dependsOn": [{ "activity": "script_drop_gold_tables", "dependencyConditions": ["Succeeded"] }],
+                "typeProperties": {
+                    "dataset": { "referenceName": "ds_gold_claims_delete", "type": "DatasetReference" },
+                    "storeSettings": { "type": "AzureBlobFSReadSettings", "recursive": true }
+                }
+            }
+        ],
+        "annotations": ["Sanitized version - no sensitive data exposed"],
+        "lastPublishTime": "2026-04-20T03:38:08Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}
