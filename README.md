@@ -7,7 +7,7 @@ SCD Type 1 & 2, and a Power BI dashboard.
 
 ## Architecture
 
-![P&C Insurance Data Pipeline Architecture](images/P_C_Insurance_Pipeline_Architecture.png)
+![P&C Insurance Data Pipeline Architecture](docs/P_C_Insurance_Pipeline_Architecture.png)
 
 ### Layer Summary
 
@@ -145,7 +145,7 @@ sql/
 ## Power BI Dashboard
 
 ### Page 1 — Executive Summary
-![Executive Summary](images/Executive_Summary.png)
+![Executive Summary](docs/Executive_Summary.png)
 
 | KPI | Value |
 |---|---|
@@ -161,7 +161,7 @@ sql/
 ---
 
 ### Page 2 — Claims & Policy Analysis
-![Claims and Policy Analysis](images/Claims_and_Policy_Analysis.png)
+![Claims and Policy Analysis](docs/Claims_and_Policy_Analysis.png)
 
 | KPI | Value |
 |---|---|
