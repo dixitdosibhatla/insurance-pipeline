@@ -27,6 +27,16 @@ Silver  → Synapse Pipeline (Script Activity) → Gold (Star Schema)
 Gold    → Power BI → Dashboard
 ```
 
+## Data Model (Gold Layer — Star Schema)
+
+![P&C Insurance Star Schema](docs/PnC_Insurance_Star_Schema.drawio.png)
+
+Brief overview of the Gold layer model:
+- Central fact table: `fact_claims`
+- Dimension tables: `dim_customer`, `dim_policy`, `dim_agent`, `dim_coverage`
+- Designed for fast analytical queries and Power BI reporting
+- Supports SCD Type 2 using `scd_start_date`, `scd_end_date`, and `is_current`
+
 ## Azure Resources
 | Resource | Name |
 |---|---|
